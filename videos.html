@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Video Vault — DJ Megatron Records</title>
+  
+  <style>
+    body {
+      background:#000;
+      color:#fff;
+      text-align:center;
+      font-family:'Poppins',sans-serif;
+      margin:0;
+      min-height:100vh;
+    }
+
+    /* === 🎬 VIDEO VAULT STYLES === */
+    #video-vault {
+      padding: 80px 20px;
+      background: radial-gradient(circle at top, #0a0a0a, #000);
+      text-align: center;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* INTRO ANIMATION */
+    #intro-vault {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      animation: fadeOut 1s ease 3s forwards;
+    }
+    #intro-vault h1 {
+      font-size: 2.4rem;
+      background: linear-gradient(90deg, #ff2d55, #8a2be2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 2s infinite alternate;
+    }
+    #intro-vault p {
+      color:#8a2be2;
+      margin-top:10px;
+      font-size:1.1rem;
+    }
+
+    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+    @keyframes pulse { from { opacity:.6; transform:scale(.9); } to { opacity:1; transform:scale(1.05); } }
+
+    /* Main Title */
+    .main-title {
+      margin-top:60px;
+      font-size:2.6rem;
+      background:linear-gradient(90deg,#ff2d55,#8a2be2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    /* COUNTDOWN BAR */
+    #countdown-container {
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    #countdown-bar {
+      height: 10px;
+      background: linear-gradient(90deg, #8a2be2, #ff2d55);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    #countdown-text {
+      margin-top: 8px;
+      color: #a970ff;
+      font-size: 0.95rem;
+    }
+
+    /* VIDEO GRID */
+    #video-grid, #preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .video-thumb { position: relative; }
+    .video-thumb iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(138,43,226,.2);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .video-thumb:hover iframe {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(255,45,85,.4);
+    }
+
+    /* 🔒 Blurred Preview */
+    .blurred iframe { filter: blur(10px) brightness(0.4); pointer-events: none; }
+    .coming-soon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .hidden { display: none; }
+    #preview-section {
+      margin-top: 60px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 40px;
+    }
+    #preview-section h2 {
+      color: #ff2d55;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      background:linear-gradient(90deg,#ff2d55,#8a2be2);
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      padding:14px 30px;
+      font-size:1rem;
+      cursor:pointer;
+      margin:25px 10px;
+      transition:transform .2s,opacity .2s;
+      box-shadow:0 0 10px rgba(138,43,226,0.5);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { 
+      transform:scale(1.05); 
+      opacity:.9; 
+      box-shadow:0 0 18px rgba(255,45,85,0.8); 
+    }
+
+    #toggle-preview {
+      background: linear-gradient(90deg, #8a2be2, #ff2d55);
+      padding: 12px 24px;
+      border-radius: 8px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+    #toggle-preview:hover { transform: scale(1.05); }
+
+    footer { margin:60px 0 30px; color:#777; font-size:.9rem; }
+
+    @media (max-width:600px){
+      .main-title {font-size:2rem;}
+      #video-grid,#preview-grid{gap:20px;}
+      #intro-vault h1 {font-size:1.8rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- === 🎬 VIDEO VAULT BLOCK === -->
+<section id="video-vault">
+  <!-- Intro Animation -->
+  <div id="intro-vault">
+    <h1>DJ MEGATRON RECORDS — VIDEO VAULT</h1>
+    <p>Exclusive Visual Access Loading...</p>
+  </div>
+
+  <!-- Vault Content -->
+  <div id="vault-content" style="display:none;">
+    <h1 class="main-title">Exclusive Video Vault 🎥</h1>
+    <p id="video-welcome">Your monthly visual experience — new drops every 30 days.</p>
+
+    <!-- Countdown Timer -->
+    <div id="countdown-container">
+      <div id="countdown-bar"></div>
+      <p id="countdown-text">Next drop unlocks in <span id="days-left">30</span> days</p>
+    </div>
+
+    <!-- Current Month's Videos -->
+    <div id="video-grid"></div>
+
+    <button id="toggle-preview" class="btn">🔒 Show Next Month's Preview</button>
+
+    <!-- Preview Section -->
+    <div id="preview-section" class="hidden">
+      <h2 class="sub-title">🎞️ Next Month's Preview (Coming Soon)</h2>
+      <div id="preview-grid"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div style="display:flex; justify-content:center; gap:20px; margin:60px 0 30px;">
+      <a href="index.html" class="btn">🎵 Music Vault</a>
+      <a href="https://djmegatronrecords.com" class="btn">🏠 Main Site</a>
+    </div>
+
+    <footer>© DJ Megatron Records 2025 | Video Vault Access</footer>
+  </div>
+</section>
+
+<script>
+/* ==========================
+   🎥 VIDEO VAULT AUTO ROTATION + COUNTDOWN
+   ========================== */
+const allVideos = [
+  "https://adilo.bigcommand.com/watch/dK3m84K_",
+  "https://adilo.bigcommand.com/watch/eqSl6T25",
+  "https://adilo.bigcommand.com/watch/mt_6h5d8",
+  "https://adilo.bigcommand.com/watch/qja9apZ6",
+  "https://adilo.bigcommand.com/watch/ooF7mkfs",
+  "https://adilo.bigcommand.com/watch/UhhueV3j",
+  "https://adilo.bigcommand.com/watch/GPqRumY0",
+  "https://adilo.bigcommand.com/watch/wRuKf4yI",
+  "https://adilo.bigcommand.com/watch/PMl5XiGs",
+  "https://adilo.bigcommand.com/watch/krgSvTdn",
+  "https://adilo.bigcommand.com/watch/lWDrBunU",
+  "https://adilo.bigcommand.com/watch/oCndDlgT",
+  "https://adilo.bigcommand.com/watch/SQjoxmQX",
+  "https://adilo.bigcommand.com/watch/NuZr6Rxv",
+  "https://adilo.bigcommand.com/watch/nvvClqzn",
+  "https://adilo.bigcommand.com/watch/IAa9q5Lu",
+  "https://adilo.bigcommand.com/watch/nDUsLezP",
+  "https://adilo.bigcommand.com/watch/Gcvw_7Al",
+  "https://adilo.bigcommand.com/watch/LAsRFcsB",
+  "https://adilo.bigcommand.com/watch/7yFl6DRt"
+];
+
+const GROUP_SIZE = 15;
+const START_DATE = new Date(Date.UTC(2025, 0, 1)); // baseline
+const ROTATION_DAYS = 30;
+
+/* --- helpers --- */
+function getCycleIndex(offset = 0) {
+  const diffDays = Math.floor((new Date() - START_DATE) / (1000 * 60 * 60 * 24));
+  const current = Math.floor(diffDays / ROTATION_DAYS);
+  const total = Math.ceil(allVideos.length / GROUP_SIZE);
+  return (current + offset) % total;
+}
+
+function getVideosFor(i) {
+  const start = i * GROUP_SIZE;
+  let vids = allVideos.slice(start, start + GROUP_SIZE);
+  if (vids.length < GROUP_SIZE) vids = vids.concat(allVideos.slice(0, GROUP_SIZE - vids.length));
+  return vids;
+}
+
+function renderGrid(id, urls, blurred = false) {
+  const container = document.getElementById(id);
+  container.innerHTML = urls.map(url => `
+    <div class="video-thumb ${blurred ? 'blurred' : ''}">
+      <iframe
+        loading="lazy"
+        src="${url}"
+        allow="autoplay; fullscreen"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+      ${blurred ? '<div class="coming-soon">Coming Soon 🔒</div>' : ''}
+    </div>
+  `).join('');
+}
+
+/* --- countdown logic --- */
+function updateCountdown(nextUnlock) {
+  const now = new Date();
+  const diff = nextUnlock - now;
+  const daysLeft = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+  document.getElementById("days-left").textContent = daysLeft;
+  document.getElementById("countdown-bar").style.width = `${100 - (daysLeft / ROTATION_DAYS) * 100}%`;
+}
+
+function initVault() {
+  const now = new Date();
+  const nextUnlock = new Date(START_DATE.getTime() + ((getCycleIndex(1)) * ROTATION_DAYS * 24 * 60 * 60 * 1000));
+
+  const current = getVideosFor(getCycleIndex());
+  const next = getVideosFor(getCycleIndex(1));
+
+  renderGrid("video-grid", current);
+  renderGrid("preview-grid", next, true);
+
+  document.getElementById("toggle-preview").onclick = () =>
+    document.getElementById("preview-section").classList.toggle("hidden");
+
+  updateCountdown(nextUnlock);
+  setInterval(() => updateCountdown(nextUnlock), 12 * 60 * 60 * 1000);
+
+  const timeUntilNext = nextUnlock - now;
+  if (timeUntilNext > 0) {
+    setTimeout(() => {
+      renderGrid("video-grid", next);
+      renderGrid("preview-grid", getVideosFor(getCycleIndex(2)), true);
+    }, timeUntilNext);
+  }
+}
+
+/* --- intro animation --- */
+setTimeout(() => {
+  document.getElementById("intro-vault").style.display = "none";
+  document.getElementById("vault-content").style.display = "block";
+  initVault();
+}, 3000);
+</script>
+
+</body>
+</html>

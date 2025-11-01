@@ -1,0 +1,1477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Members — DJ Megatron Records</title>
+
+  <style>
+    body {
+      background:#000;
+      color:#fff;
+      text-align:center;
+      font-family:'Poppins',sans-serif;
+      margin:0;
+    }
+    html, body {
+      height: 100%;
+      overflow-y: auto !important; /* allow scrolling everywhere */
+      -webkit-overflow-scrolling: touch; /* smooth scrolling on iPhones */
+    }
+
+    main {
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100%;
+      padding: 80px 20px 120px; /* bottom padding for last track */
+      background: radial-gradient(circle at top, #000, #0a0a0a);
+      box-sizing: border-box;
+    }
+
+
+    /* INTRO SPLASH */
+    #intro {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      z-index:1000;
+      animation: fadeOut 1s ease 3s forwards;
+    }
+    #intro h1 {
+      font-size:3rem;
+      background:linear-gradient(90deg,#ff2d55,#8a2be2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:pulse 2s infinite alternate;
+    }
+    #intro p {
+      color:#8a2be2;
+      margin-top:10px;
+      font-size:1.1rem;
+    }
+    @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
+    @keyframes pulse {
+      from {opacity:0.5;transform:scale(0.9);}
+      to {opacity:1;transform:scale(1.05);}
+    }
+
+    /* MAIN AREA */
+    main {
+      display:none;
+      flex-direction:column;
+      justify-content:flex-start; /* allows content to scroll on mobile */
+      align-items:center;
+      min-height:100vh;
+      padding:80px 20px 100px; /* extra bottom space */
+      background:radial-gradient(circle at top,#000,#0a0a0a);
+      box-sizing:border-box;
+}
+
+@supports (-webkit-touch-callout: none) {
+  main {
+    min-height: -webkit-fill-available; /* fixes Safari height cutoff */
+  }
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+    h1.main-title {
+      margin-top:60px;
+      font-size:2.6rem;
+      background:linear-gradient(90deg,#ff2d55,#8a2be2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    #welcome { color:#8a2be2;margin:10px 0 20px;font-size:1.1rem; }
+
+    /* SEARCH + SHUFFLE */
+    #controls {
+      margin:20px 0;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+    }
+    #search {
+      width:80%;
+      max-width:400px;
+      padding:12px 16px;
+      border-radius:10px;
+      border:2px solid #8a2be2;
+      outline:none;
+      text-align:center;
+      font-size:1rem;
+      color:#fff;
+      background:rgba(0,0,0,0.5);
+      box-shadow:0 0 12px rgba(138,43,226,0.8), inset 0 0 10px rgba(138,43,226,0.3);
+      transition:box-shadow .3s ease;
+    }
+    #search:focus {
+      box-shadow:0 0 18px rgba(255,45,85,0.9), inset 0 0 12px rgba(255,45,85,0.4);
+      border-color:#ff2d55;
+    }
+    #shuffle-btn {
+      background:linear-gradient(90deg,#ff2d55,#8a2be2);
+      border:none;
+      color:#fff;
+      padding:12px 24px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:1rem;
+      transition:transform .2s,opacity .2s;
+      box-shadow:0 0 10px rgba(138,43,226,0.6);
+    }
+    #shuffle-btn:hover {
+      transform:scale(1.05);
+      opacity:.9;
+      box-shadow:0 0 18px rgba(255,45,85,0.9);
+    }
+
+    /* TRACKS */
+    .track {
+      background:rgba(255,255,255,0.05);
+      border-radius:12px;
+      padding:15px;
+      margin:15px auto;
+      max-width:600px;
+      transition:background 0.2s;
+      box-shadow:0 0 12px rgba(138,43,226,0.2);
+    }
+    .track:hover { background:rgba(255,45,85,0.15); }
+    .track-title {
+      font-weight:600;
+      margin-bottom:8px;
+      color:#ff2d55;
+      text-shadow:0 0 6px rgba(138,43,226,0.5);
+    }
+    audio { width:100%; border-radius:8px; }
+
+    /* Buttons + Footer */
+    .btn {
+      background:linear-gradient(90deg,#ff2d55,#8a2be2);
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      padding:14px 30px;
+      font-size:1rem;
+      cursor:pointer;
+      margin:25px 10px;
+      transition:transform .2s,opacity .2s;
+      box-shadow:0 0 10px rgba(138,43,226,0.5);
+    }
+    .btn:hover { transform:scale(1.05); opacity:.9; box-shadow:0 0 18px rgba(255,45,85,0.8); }
+
+    footer { margin:60px 0 30px; color:#777; font-size:.9rem; }
+
+    @media (max-width:600px) {
+      #intro h1 {font-size:2.2rem;}
+      h1.main-title {font-size:2rem;}
+      audio {width:95%;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔮 INTRO ANIMATION -->
+  <div id="intro">
+    <h1>DJ MEGATRON RECORDS</h1>
+    <p>Exclusive Members Access Loading...</p>
+  </div>
+
+  <!-- 💽 MAIN CONTENT -->
+  <main>
+    <h1 class="main-title">Exclusive Members Vault 🎧</h1>
+    <div id="welcome">Welcome back, DJ Megatron Member! Enjoy your exclusive tracks.</div>
+
+    <!-- 🎛️ SEARCH + SHUFFLE CONTROLS -->
+    <div id="controls">
+      <input id="search" type="text" placeholder="🔍 Search for a song..." />
+      <button id="shuffle-btn">🔀 Shuffle</button>
+    </div>
+
+    <!-- 🎧 TRACK LIST -->
+    <div id="music-list">
+      <div class="track">
+        <div class="track-title">PROBLEM</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941390/DJ_MEGA_TRON_-_PROMBLEM_z37gvt.mp3"></audio>
+      </div>
+
+      <div class="track">
+        <div class="track-title">ON SIGHT FT JENN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941386/DJ_MEGA_TRON_-_ON_SIGHT_-_featuring_JENN._Prod_by_Cartekeys_kplaak.mp3"></audio>
+      </div>
+
+      <div class="track">
+        <div class="track-title">QUICKDRAW</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941384/DJ_MEGA_TRON_-_QUICKDRAW_vdpsni.mp3"></audio>
+      </div>
+
+      <div class="track">
+        <div class="track-title">BAKING SODA FT BAKING SODA FRESH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941382/DJ_MEGA_TRON_-_BAKING_SODA_-_featuring_BAKING_SODA_FRESH_ndzw7i.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">4 LIFE FT IGUESS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941375/DJ_MEGA_TRON_-4_Life_FT_I_GUESSS_vetf7u.mp3"></audio>
+      </div>
+                 
+     <div class="track">
+        <div class="track-title">GOT EM MAD FT JENN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941374/DJ_MEGA_TRON_-_Got_em_mad_-_feat_JEN_PROD_BY_CARTE_KEYS_of1tss.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HUH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941358/DJ_MEGA_TRON_-_HUH_rqr0bj.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">I NEED IT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941349/DJ_MEGA_TRON_-_I_NEED_IT-_FEATURING_CASH_tnzctw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BOOMIN BUNKIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941345/DJ_MEGA_TRON_-_BOOMIN_BUNKIN_-prod_by_Cartekeys_pzgcpy.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">STP 4 LIFE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941343/DJ_MEGA_TRON_-STP_4LIFE_PROD_BY_CARTEKEYS_pwqxhl.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BLUE EYED DEVIL</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941331/DJ_MEGA_TRON_-_BLUE_EYED_DEVIL_cxxkac.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">RICKY PART 2</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941329/DJ_MEGA_TRON_-_RICKY_PART_2_mpqlgx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">SURVIVE FT BAKING SODA FRESH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941319/DJ_MEGA_TRON_-_SURVIVE_FEATURING_BAKING_SODA_FRESH_cb8rgx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">I HATE EM</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941318/DJ_MEGA_TRON_-_I_HATE_EM_-_prod_by_DJMEGATRON_p724l4.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">RICKY PT 1</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941297/DJ_MEGA_TRON_-_RICKY_wqcwcf.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BABY MAMMA PT 1</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941291/DJ_MEGA_TRON_-_Baby._Momma._Part._1._-_prod_by_cartekeys_rbhpvr.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DRUGS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941283/DJ_MEGA_TRON_-_DRUGS_ibpryt.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BROKE BITCH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941277/DJ_MEGA_TRON_-_broke_bitch_kjrcah.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">STONE MOUNTAIN FT CARTE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941274/DJ_MEGA_TRON_-STONE_MOUNTAIN_FT_CARTE_rf1puj.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">AINT NOTHING FUNNY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941260/DJ_MEGA_TRON_-_aint_nothin_funny_2_yw4hc3.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">LEO</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941256/DJ_MEGA_TRON_-_LEO_uozing.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">KING OF RAP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941248/DJ_MEGA_TRON_-_KING_OF_RAP_q6azme.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">KING</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941238/DJ_MEGA_TRON_-_KING_MEGA_TRON_EXCLUSIVE_tm1kef.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">EL DANTE HALL</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941231/DJ_MEGA_TRON_-_EL_DANTE_HALL_tucrv1.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MADE MAN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941228/DJ_MEGA_TRON_-_MADE_MAN_nseqfs.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MUST BE A FUCK NIGGA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941227/DJ_MEGA_TRON_-_must_be_a_fuck_nigga_yrkrb1.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MR CLEAN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941220/DJ_MEGA_TRON_-_MR_CLEAN_fgp16p.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">SHAKE IT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941198/DJ_MEGA_TRON_-_MEGA_SHAKE_IT_dkigbv.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">ROXKOUT MOTION FT MEGATRON</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941184/DJ_MEGA_TRON_-MOTION_X_ROCK_OUT2_rubac5.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DOPE COOKER PACK JUUGER</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941172/DJ_MEGA_TRON_-_dope_cookerf_pack_juuger_rwkfce.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">GDN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941171/DJ_MEGA_TRON_-GDN_jbtnp1.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MONEY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941168/DJ_MEGA_TRON_-_money_ft_chrisIGUESSS_uzuc2n.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">TALK YO SHIT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941147/DJ_MEGA_TRON_-TALK_YO_SHIT_bn5mws.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">I HATE FAT NIGGAS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941135/DJ_MEGA_TRON_-_I_Hate_fat_niggas_p0n5sj.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MONTAE & PHAT PACK CAME IN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941134/montae_and_phat-_pack_came_in_oenife.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">PLEDGE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941124/DJMEGATRON_PLEDGE_ekyrjx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">2 STEP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941108/DJ_MEGA_TRON_-_2_STEP_hbvxzu.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">YALL HOES</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941105/DJ_MEGA_TRON_-YALL_HOES_ryigtt.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">ROXKOUT CLAP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941075/Rockout_-_c_l_a_p_Prod._by_Dags__042048_whju6i.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BOOMIN BUNKIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941068/DJ_MEGA_TRON_-BOOMIN_N_BUNKIN_1_gdh0ne.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MIRROR</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941067/DJ_MEGA_TRON_-MIRROR_iscjxb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">ROXKOUT GUCCI SHIT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941065/roxkout_rock_gucci_shit_vbrbln.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BLAME GAME</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941057/DJ_MEGA_TRON_-_BLAME_GAME_aqtfps.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MOMMA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941039/DJ_MEGA_TRON_-MOMMA_PROD_BY_CARTEKEYS_mssbnf.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">FLOWERS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941032/DJ_MEGA_TRON_-FLOWERS_yu4urw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">FEELS GOOD TO BE A GANGSTA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941031/DJ_MEGA_TRON_-FEELS_GOOD_TO_BE_A_GANGSTA_oeylri.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">WORLD SPIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941027/DJ_MEGA_TRON_-WORLD_SPIN_NEW_bdoesg.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">GUNS DOWN HANDS UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760941017/DJ_MEGA_TRON_-GUNS_DOWN_HANDS_ry6gex.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">WET READY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940992/DJ_MEGA_TRON_-WET_READY_zxqqsu.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BYE BYE MONTAE $ PHAT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940971/BYE_BYE_-_MONTEPHAT_rifbjr.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DRUNK</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940970/DJMEGA_TRON_-DRUNK_PROD_BY_CARTEKEYS_jijz78.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DECPTICONS FT DJ HELP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940952/DECPTICONS_MEGA_Tron_featuring_Dj_help_u1a3ad.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">PIMMP GRAVY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940944/DJ_MEGA_TRON_-_Pimp_Gravy_-DJ_EVERYTHING_elajen.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MEGAVELI</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940931/DJ_MEGA_TRON_-_MEGAVELI_PROD_BY_CARTEKEYS_o1r2x8.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BYE BYE MONTE & PHAT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940924/BYE_BYE_MONTE_FT_PHAT_sclq9i.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BROKEN ICEBERG PT 2</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940922/DJ_MEGA_TRON_-_Broken_ICEBERG_PART_2._Prod_by_cartekeys_nadgbw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">WICKED FT RUDE RICK</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940916/DJ_MEGA_TRON_-_WICKED._FT._RUDE_RICK_Prod_by_CARTEKEYS_vrrnpk.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HOLLOWEEN NEFEW</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940915/HOLLOWEN_NEFEW_MEGA_Tron_prod_by_Cartekeys_irrxwt.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BOBBY ICEBERG BITCH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940914/DJ_MEGA_TRON_-_Bobby_iceberg_bitch_-_prod_by_cartekeys_sbzzsp.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BAD MAN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940898/DJ_MEGA_TRON_-_BAD_MAN._Prod_by_cartekeys_mhylzv.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CAKE DAY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940893/DJ_MEGA_TRON_-_Cake_day_prodbycartekeys_n6xnhb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BAD MAN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940891/DJ_MEGA_TRON_-_Bad._Man._zitmab.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">GET OFF FT CRICKET D</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940878/DJ_MEGA_TRON_-_Get._Off._Feat._Cricket._D._Prod_by_cartekeys_nosxqk.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CAN WE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940878/DJ_MEGA_TRON_-_Can._We._Prodbycartekeys_k57axb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">GEEKED UP FT CARTEKEYS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940874/DJ_MEGA_TRON_-_Geeked_._Up._fea_cartekeys._Prod_by_cartekeys_zvioky.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">COOKING SONG</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940874/DJ_MEGA_TRON_-_Cooking_song._Prod_by_cartekeys_fiowdr.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">SWERVE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940869/DJ_MEGA_TRON_-_Last_song._Until._March_2023_Swerve._Prod_by_cartekeys_lyyxhs.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">NO MORE TRU</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940862/DJ_MEGA_TRON_-_No_more_tru._prodbycarekeys_be17hq.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DESTINED</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940861/DJ_MEGA_TRON_-_Destined._prod_my_cartekeys_jeqktx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">EXCITED</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940860/DJ_MEGA_TRON_-_Excited-_Prod_by_cartekeys_kq39qo.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HAPPY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940851/DJ_MEGA_TRON_-_Happy._B_day._MEGATRON._YOU._Are_fv35i3.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MY MOM BLAME MY DAD MY DAD BLAME MY MOM</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940842/DJ_MEGA_TRON_-_My_mom_blame_my_dad._My_dad_blame_my_mom._prod_by_cartekeys_f6vnyb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">WHERE YOU BEEN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940839/DJ_MEGA_TRON_-_WHERE_YOU_BEEN_-_PROD_BY_CARTEKEYS_yzezw8.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MR. 500000</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940835/DJ_MEGA_TRON_-_Mr._500_000._Prod_by_cartekeys_ckahdl.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">NOBODY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940835/DJ_MEGA_TRON_-_Nobody._bpeu4e.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">POUR IT UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940830/DJ_MEGA_TRON_-_Pour_it_up._prod_you_cartekeys_kjbm98.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">NO TRUST</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940824/DJ_MEGA_TRON_-_No_trust._Prod_by_cartekeys_bgbjyz.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">WHO DISLOYAL PEOPLE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940818/DJ_MEGA_TRON_-_Tru_views._Who_disloyal._People._prod_by_cartekeys_yrz4aq.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">PLEASE DONT MAKE ME CHOOSE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940818/DJ_MEGA_TRON_-_Please._Don_t_make_me_choose_-_prod_by_cartekeys_qqrjns.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">TRAP BACK ROLLIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940811/DJ_MEGA_TRON_-_Trap_back_Rollin_gvxgvp.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CANT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940808/DJ_MEGA_TRON_Can_t._z7zxi1.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">GET YOUR SHINE ON</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940797/DJ_MEGA_TRON_-GET_YOUR_SHINE_ON_m4lmkw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">SMOKIN TRAPPIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940793/DJ_MEGA_TRON_-_-_SMOKIN___TRAPPIN_TRON_bycartekeys_ekkaxw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">YOU MUST BE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940792/DJ_MEGA_TRON_-YOU_MUST_BE._kocapu.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MR 400000</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940783/DJ_MEGA_TRON_-_Mr400_000probycartekeys_400_000_oggkyx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">EAT IT BEAT IT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940780/DJ_MEGA_TRON_-_EAT_IT_BEAT_IT_k2qpai.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">KING LEO</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940775/DJ_MEGA_TRON_King._Leo_dhmkev.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">NO LOVE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940769/DJ_MEGA_TRON_NO._LOVE._n8gjgb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">I GOT IT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940762/DJ_MEGA_TRON_-_I_got_it._PROD_BY_CARTEKEYS_a2cnop.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HAPPINESS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940758/DJ_MEGA_TRON_-_HAPPINESS_bc7syx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MEGA GRIND MEGA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940753/DJ_MEGA_TRON_-_MEGA_GRIND_MEGA_Tron_prod_by_cartekeys_vufzd3.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">WILD BEAST</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940750/DJ_MEGA_TRON_-_WILDERBEAST._PRO._BY_CARTEKEYS_a8d4qz.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">COUNT IT UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940740/DJ_MEGA_TRON_-_COUNT_IT_UP_-_prod_by_cartekeys_yvtfvg.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MAN IN THE MIRROR</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940739/DJ_MEGA_TRON_-_man_in_the_mirror_prodby_cartekeys_ak1z3f.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BLACK MAN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940737/DJ_MEGA_TRON_-_BLACK_MAN_-_prod_by_cartekeys_wl1qqb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">SHAKE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940731/DJ_MEGA_TRON_-_SHAKE_eynlzz.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">3 2 1 HAPPY NEW YEARS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940728/DJ_MEGA_TRON_-_3._2._1._Happy._New._Years._Prod_by_cartekeys_abxygd.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CANT STOP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940726/DJ_MEGA_TRON_-_Can_t._Stop._Prod_by_cartekeys_kscsj7.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">ALL ABOUT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940720/DJ_MEGA_TRON_-_ALL_ABOUT_-_prod_by_Cartekeys_uqghis.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">COOK IT UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940715/DJ_MEGA_TRON_-_COOK_IT_UP_-_prod_by_cartekeys_mcxooj.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BACK ROLLIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940714/DJ_MEGA_TRON_-_backrollin_procbycartekeys_fqyy4w.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">AUG 20 MEGATRON BDAY SONG</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940707/DJ_MEGA_TRON_-_Aug._20._MEGATRON._B_DAY._B_day._Song_2._Dj_megatron_prod_by_cartekeys_achbqb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CASHAPP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940695/DJ_MEGA_TRON_-_Cash_app_prod_by_cartekeys_mgrxb6.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CLEPTOMANIC</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940692/DJ_MEGA_TRON_-_CLEPTOMANIC_q2stes.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DROP IN POT PART 2</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940686/DJ_MEGA_TRON_-_Drop_in_pot_part_2-_prod_cartekeys_aqncc3.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">F.U.N</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940683/DJ_MEGA_TRON_-_F_U_N_jpsril.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">COOK IT UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940673/DJ_MEGA_TRON_-_COOK_IT_UP_s6vb7q.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">DAT WAY MONTE & PHAT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940666/DJ_MEGA_TRON_-_DAT_WAY_MONTE_PHAT._PROD_BY_CARTEKEYS_fylhxr.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">ENERGY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940654/DJ_MEGA_TRON_-_Energy_feat_carteykeys_drh9np.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">FAKE BROTHER JAMES SPANN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940654/DJ_MEGA_TRON_-_Fake._Brother._James_spann._Prod_by_cartekeys_v3vsfi.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">GANGSTER</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940653/DJ_MEGA_TRON_-_Gangster_-_Prod_by_cartekeys_fozjp4.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">GET OFF YOUR ASS FT CRICKET</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940646/DJ_MEGA_TRON_-_GET_OFF_YOUR_ASS_feat_CRICKET_PROD_BY_CARTEKEYS_o6ui09.mp3"></audio>
+      </div>
+    
+     <div class="track">
+        <div class="track-title">LOLI POP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940645/DJ_MEGA_TRON_-_Loti_pop_prod_by_cartekeys_j3prxl.mp3"></audio>
+      </div>
+     <div class="track">
+        <div class="track-title">FIRST OF THE MONTH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940637/DJ_MEGA_TRON_-_FIRST_OF_THE_MONTH-prod_by_Cartekeys_x3uubo.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MERRY CHRISTMAS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940629/DJ_MEGA_TRON_-_MERRY_CHRISTMAS_qgbunm.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HOT 40 DOLLARS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940627/DJ_MEGA_TRON_-_HOT_40_DOLLARS_q22y42.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HATE TO SEE YOU LEAVE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940623/DJ_MEGA_TRON_-_HATE_TO_SEE_YOU_LEAVE_-prod_by_Cartekeys_pufkqd.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">JOY PAIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940620/DJ_MEGA_TRON_-_JOY_PAIN_-_prod_by_Cartekeys_nd7ywq.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HOSHI</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940617/DJ_MEGA_TRON_-_hoshi_prod_by_cartekeys_i2g5e1.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">KENTE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940609/DJ_MEGA_TRON_-_KENTE_-CARTEKEYS_epuick.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MERRY X MAS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940599/DJ_MEGA_TRON_-_Merry._X_mas._N_a_ecaxnq.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MICHAEL JACKSON</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940588/DJ_MEGA_TRON_-_Michael._Jackson_Prod_by_cartekeys_ompbps.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">OLD GANGSTA FT CARTEKEYS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940586/DJ_MEGA_TRON_-_OLD_GANSTA_ft_cartekeys_jmhi70.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">MAN IN THE MIRROR</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940585/DJ_MEGA_TRON_-_Man_In_The_Mirror_roxeey.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">NO FEAR</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940581/DJ_MEGA_TRON_-_No_FEAR_pem78n.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MUST BE MEGA FT ROXKOUT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940573/DJ_MEGA_TRON_-_MUST_BE_MEGA_FEATURING_ROCKOUT_4_EVA_prod_by_MEGA_Tron_ysivdu.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">PLEASE DONT FT ROCK OUT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940572/DJ_MEGA_TRON_-_PLEASE_DONT_-_featuring_ROCK_OUT_schypu.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">MY BROTHERS KEEP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940572/DJ_MEGA_TRON_-_MY_BROTHERS_KEEPER_PROD_BY_CARTEKEYS_nz97tx.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">NO TRUST</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940568/DJ_MEGA_TRON_-_No_Trust_ap5xma.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">NOCTURNAL</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940556/DJ_MEGA_TRON_-_NOCTURNA_mec72g.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">NOTHIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940547/DJ_MEGA_TRON_-_NOTHIN_-_prod_by_Cartekeys_dasr56.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">POPS AKA TYRONE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940547/DJ_MEGA_TRON_-_POPS_AKA_TYRONE_MEGATRON_-_Prod_cartekeys_bqze8q.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">OLD VS YOUNG IUH DON FT MEGATRON</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940546/DJ_MEGA_TRON_-_Old._Vs._young._FT_IUH_DON._rcv9pe.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">PEOPLE NOT TRUE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940542/DJ_MEGA_TRON_-_PEOPLE_NOT_TRUE_a51ddc.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">PIMP GRAVY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940531/DJ_MEGA_TRON_-_Pimp._._Gravy._DJ_EVERYTHING_ueziid.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">TRUST ME FT CARTEKEYS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940525/DJ_MEGA_TRON_-_TRUST_ME_M-_feat_cartekeys_womzhh.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">R.I.P. SONG</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940524/DJ_MEGA_TRON_-_R._I._P._SONG._cbogsf.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">POT WATER FT OG HUSTLE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940516/DJ_MEGA_TRON_-_POT___WATER_-_featuring_O_G_HUSTLE_yghobl.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">RABBIT GOT THE GUN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940511/DJ_MEGA_TRON_-_RABBIT_GOT_THE_GUN_lkaanp.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">WHOLE FAMILY MONTE PHAT FEATURING</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940510/DJ_MEGA_TRON_-_WHOLE_FAMILY_MONTE_PHAT_FEATURING_jkekth.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">SAVAGE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940508/DJ_MEGA_TRON_-_SAVAGE_-prod_by_cartekeys_z83rsz.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">THINE LINE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940503/DJ_MEGA_TRON_-_THIN_LINE_Prod_by_cartekeys_q4lmvy.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">STICK UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940496/DJ_MEGA_TRON_-_Stick_up_-_Featuring._Cartekeys-_Mike_savage_-_luh_Don_e7q9sz.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">TRAP LIVES MATTER</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940487/DJ_MEGA_TRON_-_TRAP_LIVES_MATTER_yeajt2.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">YEA YEA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940476/DJ_MEGA_TRON_-_YEA_YEA_d1t5jk.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">WHAT THEY ON</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940473/DJ_MEGA_TRON_-_WHAT_THEY_ON_-_prod_by_Cartekeys_zlcpnc.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">WILD WILD WEST</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940473/DJ_MEGA_TRON_-_WILD_WILD_WEST_-_featuring_MONTE_hmuiaf.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">WHO SHOT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940469/DJ_MEGA_TRON_-_WHO_SHOT_vdnnby.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">YOU MUST BE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940453/DJ_MEGA_TRON_-_YOU_MUST_BE_fx5d2k.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">YA DIG FT PHAT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940450/DJ_MEGA_TRON_-_YA_DIG_-_featuring_PHAT_xw6l2h.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">FAMILY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940446/DJ_MEGA_TRON_-FAMILY_solx6q.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">3RD GENERATION HOE REMIX</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940437/DJ_MEGA_TRON_-3rd_GENERATION_HOE_REMIX_syql9o.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">1980S FLOW</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940440/DJ_MEGA_TRON_-1980_s_FLOW_ijt2oq.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">3RD GENERATION HOE REMIX</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940437/DJ_MEGA_TRON_-3rd_GENERATION_HOE_REMIX_syql9o.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">40</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940431/DJ_MEGA_TRON_-40_PROD_BY_CARTEKEYS_jqmphg.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">DOE SWING</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940430/DJ_MEGA_TRON_-DOE_SWING_PROD_BY_CARTEKEYS_1_ds5m4o.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">BITCHES GATES AND DOOKIE AKA DOOBIE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940423/DJ_MEGA_TRON_-BITCH_GATES_AND_DOOKIE_AKA_DOOBIE_hadmmu.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">B 4</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940421/DJ_MEGA_TRON_-B_4_-_prod_by_Cartekeys_k0klqk.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">C-NOTE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940418/DJ_MEGA_TRON_-C-NOTE_dph004.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">BIG HOMIE WHO</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940418/DJ_MEGA_TRON_-BIG_HOMIE_WHO___PROD_BY_CARTEKEYS_qanbc7.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">CANT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940404/DJ_MEGA_TRON_-CANT_wacwwe.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">BLACK POWER</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940403/DJ_MEGA_TRON_-BLACK_POWER_t315ui.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">CHASIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940391/DJ_MEGA_TRON_-CHASIN_PROD_BY_CARTEKEYS_ffqftr.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">DECEPTICONS FT DJ HELP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940391/DJ_MEGA_TRON_-DECPTICONS-_featuring_Dj_help_himbrs.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">FAT NIGGAZ SHORT NIGGAZ</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940386/DJ_MEGA_TRON_-FAT_NIGGAZ_SHORT_NIGGAZ_PROD_BY_MEGA_Tron_mmgkpy.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">DOE SWING</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940379/DJ_MEGA_TRON_-DOE_SWING_PROD_BY_CARTEKEYS_dbxu27.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">CHECKMATE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940379/DJ_MEGA_TRON_-CHECKMATE_hsdmdd.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">GET EM MEGA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940363/DJ_MEGA_TRON_-GET_EM_MEGA_ewn4ew.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">I WANT THAT DOJA SMOKE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940363/DJ_MEGA_TRON_-I_WANT_THAT_DOJA_SMOKE_g0rlk7.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">GET EM MEGA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940363/DJ_MEGA_TRON_-GET_EM_MEGA_ewn4ew.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">ION FUCK WITH YOU</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940362/DJ_MEGA_TRON_-ION_FUCK_WIT_YOU_swkucd.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">NIKA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940359/DJ_MEGA_TRON_-NIKA_PROD_BY_CARTEKEYS_nc00xe.mp3"></audio>
+      </div>
+
+
+     <div class="track">
+        <div class="track-title">GO DJ</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940359/DJ_MEGA_TRON_-GO_DJ_r6wbhc.mp3"></audio>
+      </div>
+
+
+     <div class="track">
+        <div class="track-title">LIES</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940355/DJ_MEGA_TRON_-LIES_wyohfl.mp3"></audio>
+      </div>
+
+     <div class="track">
+        <div class="track-title">NEPHEW</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940346/DJ_MEGA_TRON_-NEPHEW_alsxsq.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MARIO BROS YOSHI</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760940345/DJ_MEGA_TRON_-MARIO_BROS_YOSHI_PROD_BY_CARTEKEYS_malhfo.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">URIAH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939373/DJ_MEGA_TRON_-Uriah_prod_by_Cartekeys_kyrgyc.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">NEECHIE FN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939372/DJ_MEGA_TRON_-PRESENTS_NEECHIE_FN_PROD_BY_CARTEKEYS_pcywxw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">PRETTY BOY WHO</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939372/DJ_MEGA_TRON_-PRETTY_BOY_WHO_PROD_BY_CARTEKEYS_yobpwt.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">SHINE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939364/DJ_MEGA_TRON_-SHINE_PROD_BY_CARTEKEYS_smbkm6.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">RUN IT UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939364/DJ_MEGA_TRON_-RUN_IT_UP_-_featuring_mxntefromda6_buyatl.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BELLS CARTEKEYS FT REDAN RD RICO</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939360/BELLS_CARTEKEYS_FEATURING_REDAN_RD_RICO_v4x9ss.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BELLS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939360/BELLS_CARTEKEYS_FEATURING_REDAN_RD_RICO_v4x9ss.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">W.I.M.L</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939354/DJ_MEGA_TRON_-W.I.M.L_galqnf.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">WHAT YOU GOT FT BIG DIAMOND</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939350/DJMEGA_TRON_-WHAT_YOU_GOT_FT_BIG_DYMOND_PROD_BY_CARTEKEYS_fteffb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DROP IT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939349/DJMEGA_TRON_-DROP_IT_official_video_PROD_BY_CARTEKEYS_hlffqx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BAKING SODA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939349/DJ_MEGA_TRON_-Bakin_Soda_PROD_BY_CARTEKEYS_seuwqw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BACK UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939337/DJ_MEGA_TRON_-_BACK_UP_-_prod_by_Cartekeys_nrlu3m.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">B DAY HAPPY B DAY MEGATRON</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939330/DJ_MEGA_TRON_-_B_DAY_HEAD_HAPPY_B_DAY_MEGA_Tron_prod_by_Cartekeys_lnbrzp.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HIT EM ROCK OUT FT ROXKOUT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939325/HIT_EM_ROCK_OUT_FEATURING_ROC_mzj8gi.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">ASS ON ASS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939324/DJ_MEGA_TRON_-_ASS_ON_ASS_-_prod_by_Cartekeys_l5fqnx.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BEEN GETTING MONEY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939318/DJ_MEGA_TRON_-_Been_getting_money-prod_by_cartekeys_xdhciz.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BABY MAMA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939313/DJ_MEGA_TRON_-_BABY_MAMA_dj6v8a.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CALL ME</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939309/DJ_MEGA_TRON_-_CALL_ME_-_prod_by_Cartekeys_rqh3nk.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BLACK KING MR ONE MILLION SOLD WITH SALES AND STREAMS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939305/DJ_MEGA_TRON_-_BLACK_KING_MR_ONE_MILLION_SOLD_WITH_SALES_AND_STREAMS_g46tsj.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BURGLAR BARS DOORS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939300/DJ_MEGA_TRON_-_BURGLAR_BARS_DOORS_-_featuring_ZIP_PROD_BY_CARTEKEYS_pt4pqj.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BLACK MAN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939298/DJ_MEGA_TRON_-_BLACK._MAN_ds5m4e.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CHOPPA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939294/DJ_MEGA_TRON_-_CHOPPA_-_prod_by_Cartekeys_gs0fu5.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CHIDDY CHIDDY FREESTYLE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939290/DJ_MEGA_TRON_-_CHIDDY_CHIDDY_FREESTYLE_sr6got.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CAN T FT MOTION X & PHAT FACE 50</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939287/DJ_MEGA_TRON_-_CAN_I._FEATURING_MOTION_X_AND_PHAT_FACE_50_yklrz9.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">BURGLARS BAR DOORS FT ZIP LOC</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939280/DJ_MEGA_TRON_-_BURGLARS_BAR_DOOR_S_featuring_ZIP_LOC_prod_by_Cartekeys_czcrxb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CANT STOP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939279/DJ_MEGA_TRON_-_CANT_STOP_-_prod_by_Cartekeys_nneuuy.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CHIDDY CHIDDY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939268/DJ_MEGA_TRON_-_CHIDDY_CHIDDY_zqmght.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">GOOOOOOO</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939264/DJ_MEGA_TRON_-_GOOOOOOO_wu4lh3.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">CHILL BITCH</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939263/DJ_MEGA_TRON_-_CHILL_BITCH_fgdcom.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DIAL TONE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939255/DJ_MEGA_TRON_-_DIAL_TONE_odb31u.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HIGHS AND LOWS FT MIAJA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939253/DJ_MEGA_TRON_-_HIGHS_AND_LOWS_-_FEATURING_MIAJA_prod_by_Cartekeys_mjaxan.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">DA ONE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939252/DJ_MEGA_TRON_-_DA_ONE_-_prod_by_Cartekeys_wotdwl.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HEY HEY HEY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939246/DJ_MEGA_TRON_-_HEY_HEY_HEY_ydwcxy.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">MIND ON MY MONEY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939236/DJ_MEGA_TRON_-_MIND_ON_MY_MONEY_-_prod_by_Cartekeys_ywvreb.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">HOLLOWEEN NEFEW</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939235/DJ_MEGA_TRON_-_HOLLOWEN_NEFEW_-_prod_by_Cartekeys_z6ec4r.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">JEALOUS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939230/DJ_MEGA_TRON_-_JEALOUS_-_featuring_STRANGER_nb7prm.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">KILL EM</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939227/DJ_MEGA_TRON_-_KILL_EM_-_prod_by_Cartekeys_moltmj.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">MY MAMA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939227/DJ_MEGA_TRON_-_MY_MAMA_ism6pz.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">MEGATRON</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939222/DJ_MEGA_TRON_-_MEGATRON_PROD_BY_CARTEKEYS_kypbxi.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">JEALOUSY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939220/DJ_MEGA_TRON_-_JEALOUSY_zvc7qv.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">WHAT UP TEXAS PART 2</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939101/DJ_MEGA_TRON_-_WHAT_UP_TEXAS_PART_2_li9utl.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">MONEY BUISNESS POWER</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939206/DJ_MEGA_TRON_-_MONEY_BUSINESS_POWER_qj3ljb.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">MONEY COMIN IN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939204/DJ_MEGA_TRON_-_MONEY_COMIN_IN_sex7rr.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">MONICA AND TASHA MILLER SISTERS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939204/DJ_MEGA_TRON_-_MONICA_AND_TASHA_MILLER_THE_MILLER_SISTERS_-_prod_by_MEGA_Tron_s95sni.mp3"></audio>
+      </div>             
+     <div class="track">
+        <div class="track-title">ONCE AGAIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939202/DJ_MEGA_TRON_-_ONCE_AGAIN_-_prod_by_Cartekeys_x6d56z.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">NO MORE TRONTI EVERYBODY JUST CALL ME MONEY MAKING MEGA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939197/DJ_MEGA_TRON_-_NO_MORE_TRONTI_EVERYBODY_JUST_CALL_ME_MONEY_MAKING_MEGA_PROD_BY_CARTEKEYS_aa06wg.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">PUSHA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939189/DJ_MEGA_TRON_-_PUSHA_-_prod_by_Cartekeys_tfqvab.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">POP MY SHIT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939187/DJ_MEGA_TRON_-_POP_MY_SHIT_qfbckp.mp3"></audio>
+      </div>             
+     <div class="track">
+        <div class="track-title">ONE TWO</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939186/DJ_MEGA_TRON_-_ONE_TWO_-_prod_by_Cartekeys_gm6wzw.mp3"></audio>
+      </div>
+                          
+     <div class="track">
+        <div class="track-title">SAY IT WITH YOUR CHEST</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939182/DJ_MEGA_TRON_-_SAY_IT_WITH_YOUR_CHEST_qukmdw.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">RUNNIN TO THAT MONEY</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939169/DJ_MEGA_TRON_-_RUNNIN_TO_THAT_MONEY_sbdpcm.mp3"></audio>
+      </div>
+                     
+     <div class="track">
+        <div class="track-title">RACKS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939168/DJ_MEGA_TRON_-_Racks_-_prod_by_cartekeys_jqell8.mp3"></audio>
+      </div>
+                    
+     <div class="track">
+        <div class="track-title">RUN IT UP</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939168/DJ_MEGA_TRON_-_RUN_IT_UP_-_featuring_MONTE_prod_by_Cartekeys_w03h1a.mp3"></audio>
+      </div>
+                                  
+     <div class="track">
+        <div class="track-title">SAY IT WITH YOUR CHEST</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939165/DJ_MEGA_TRON_-_SAY_IT_WITH_YOUR_CHEST_facpce.mp3"></audio>
+      </div>
+
+                             
+     <div class="track">
+        <div class="track-title">RUNNIN GUNNIN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939161/DJ_MEGA_TRON_-_RUNNIN_GUNNIN_xjexcc.mp3"></audio>
+      </div>
+
+                             
+     <div class="track">
+        <div class="track-title">STAY DOWN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939149/DJ_MEGA_TRON_-_STAY_DOWN_-_prod_by_Cartekeys_vujkot.mp3"></audio>
+      </div>
+
+                             
+     <div class="track">
+        <div class="track-title">SISTER SISTER 2</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939146/DJ_MEGA_TRON_-_SISTER_SISTER_2_-_prod_by_MEGA_Tron_pgxzfg.mp3"></audio>
+      </div>
+
+                             
+     <div class="track">
+        <div class="track-title">STANDING ON IT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939143/DJ_MEGA_TRON_-_STANDIN_ON_IT_b0ancg.mp3"></audio>
+      </div>
+
+                             
+     <div class="track">
+        <div class="track-title">LOVE HATE</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939134/DJ_MEGA_TRON_-LOVE_HATE_gdgkiy.mp3"></audio>
+      </div>
+
+                             
+     <div class="track">
+        <div class="track-title">YEA NIGGA</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939130/DJ_MEGA_TRON_-_YEA_NIGGA-_prod_by_Cartekeys_cylvyz.mp3"></audio>
+      </div>
+
+                             
+     <div class="track">
+        <div class="track-title">TRANSFORMED</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939130/DJ_MEGA_TRON_-_TRANSFORMED_-_prod_by_Cartekeys_iuskfd.mp3"></audio>
+      </div>
+                                     
+     <div class="track">
+        <div class="track-title">STANDIN ON IT</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939129/DJ_MEGA_TRON_-_STANDIN_ON_IT_pfotoc.mp3"></audio>
+      </div>
+             
+     <div class="track">
+        <div class="track-title">THIS THAT FT STRANGER</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939126/DJ_MEGA_TRON_-_THIS_THAT_FEATURING_STRANGER_ubhio1.mp3"></audio>
+      </div>
+                                          
+     <div class="track">
+        <div class="track-title">SUPA CLEAN</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939119/DJ_MEGA_TRON_-_SUPA_CLEAN_-_prod_by_Cartekeys_fr4ynt.mp3"></audio>
+      </div>
+                                          
+     <div class="track">
+        <div class="track-title">TYPE OF</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939113/DJ_MEGA_TRON_-_TYPE_OF_-_prod_by_Cartekeys_agk3qo.mp3"></audio>
+      </div>
+                                          
+     <div class="track">
+        <div class="track-title">THEY MAD AT ME</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939112/DJ_MEGA_TRON_-_THEY_MAD_AT_ME_ik3biv.mp3"></audio>
+      </div>
+                                          
+     <div class="track">
+        <div class="track-title">BIRTHDAY DANCE CRANK THAT DERRAL WALKER</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939101/DJ_MEGA_TRON_-BIRTHDAY_DANCE_CRANK_THAT_DERRAL_WALKER_s3dqbz.mp3"></audio>
+      </div>
+                                          
+     <div class="track">
+        <div class="track-title">BROKE NIGGAS</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939101/DJ_MEGA_TRON_-BROKE_NIGGAS_wkg8i6.mp3"></audio>
+      </div>
+                                          
+     <div class="track">
+        <div class="track-title">WHAT UP TEXAS PART 2</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939101/DJ_MEGA_TRON_-_WHAT_UP_TEXAS_PART_2_li9utl.mp3"></audio>
+      </div>
+                                          
+     <div class="track">
+        <div class="track-title">MURDERA ZIP AND ISHA DON Track 246</div>
+        <audio controls controlsList="nodownload" oncontextmenu="return false;" src="https://res.cloudinary.com/dfzue0r2e/video/upload/v1760939089/MURDERA_ZIP_AND_ISHA_DON_PROD_BY_CARTEKEYS_b4cgc8.mp3"></audio>
+      </div>
+       
+      <!-- … continue through Track 246 … -->
+    </div>
+
+    <button class="btn" onclick="window.location.href='https://djmegatronrecords.com'">🏠 Back to Home</button>
+
+    <footer>© DJ Megatron Records 2025 | Members Access</footer>
+  </main>
+
+  <script>
+    // ✳️ Intro Splash Timer
+    setTimeout(() => {
+      document.getElementById("intro").style.display = "none";
+      document.querySelector("main").style.display = "flex";
+    }, 3200);
+
+    // 🔍 SEARCH FILTER
+    document.getElementById("search").addEventListener("input", e => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll(".track").forEach(track => {
+        const title = track.querySelector(".track-title").textContent.toLowerCase();
+        track.style.display = title.includes(term) ? "block" : "none";
+      });
+    });
+
+    // 🔀 SHUFFLE TRACKS
+    document.getElementById("shuffle-btn").addEventListener("click", () => {
+      const list = document.getElementById("music-list");
+      const tracks = Array.from(list.children);
+      for (let i = tracks.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [tracks[i], tracks[j]] = [tracks[j], tracks[i]];
+      }
+      list.innerHTML = "";
+      tracks.forEach(t => list.appendChild(t));
+    });
+  </script>
+
+</body>
+</html>

@@ -177,10 +177,76 @@ body {
       h1.main-title {font-size:2rem;}
       audio {width:95%;}
     }
-  </style>
+  /* ... ALL YOUR EXISTING CSS STAYS HERE ... */
+  
+  /* === 🧭 STICKY TOP NAVIGATION BAR === */
+  #members-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(138, 43, 226, 0.3);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    background: linear-gradient(90deg, #8a2be2, #ff2d55);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 45, 85, 0.6);
+  }
+
+  /* Add top padding to body to account for fixed nav */
+  body {
+    padding-top: 70px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 600px) {
+    #members-nav {
+      padding: 12px 15px;
+      gap: 10px;
+    }
+    
+    .nav-btn {
+      padding: 8px 15px;
+      font-size: 0.8rem;
+    }
+    
+    body {
+      padding-top: 60px;
+    }
+  }
+</style>
+  
 </head>
 <body>
-
+  
+  <!-- 🧭 STICKY TOP NAVIGATION -->
+  <nav id="members-nav">
+    <a href="index.html" class="nav-btn">🎵 Music Vault</a>
+    <a href="videos.html" class="nav-btn">🎥 Video Vault</a>
+    <a href="https://djmegatronrecords.com" class="nav-btn">🏠 Main Site</a>
+  </nav>
+  
   <!-- 🔮 INTRO ANIMATION -->
   <div id="intro">
     <h1>DJ MEGATRON RECORDS</h1>
